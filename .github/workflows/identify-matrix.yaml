@@ -8,8 +8,11 @@ jobs:
   create-matrix:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout directory
+        uses: actions/checkout@3
+
       - name: Display the current path
         shell: pwsh
         run: |
-         $bla = 1 + 4
+         $bla = Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
          $bla
