@@ -7,16 +7,27 @@ on:
 jobs:
   create-matrix:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix_object}}
     steps:
       - name: Checkout directory
         uses: actions/checkout@v3
 
-      - name: Display the current path
+      - name: Creat Matrix object
+        id: matrix
         shell: pwsh
         run: |
           $matrix = [pscustomobject]@{}
           $directories = [System.Collections.ArrayList]@()
           Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName)} | Out-Null
           $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
-          $matrix | ConvertTo-Json
+          $mat_object = $matrix | ConvertTo-Json
+          Add-Content -Path $env:GITHUB_OUTPUT -Value "matrix_object=$mat_object"
 
+  fetch-matrix-data:
+    runs-on: ubuntu-latest
+    needs: create-matrix
+    steps:
+      - name: Output the matrix object
+        run: |
+          echo "${{ needs.create-matrix.outputs.matrix_object }}""
