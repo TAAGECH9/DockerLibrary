@@ -42,7 +42,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - name: Print current path
         run: |
-          echo ${{ matrix.projects }}
+          echo $PWD
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
