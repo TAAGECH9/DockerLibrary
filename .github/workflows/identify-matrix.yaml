@@ -22,6 +22,6 @@ jobs:
           Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName)} | Out-Null
           $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
           $mat_object = $matrix | ConvertTo-Json
-          Add-Content -Path $env:GITHUB_ENV -Value @" `n matrix_object=$mat_object n` "@
+          Add-Content -Path $env:GITHUB_ENV -Value "matrix_object=$mat_object"
       - name: Print the output
         run: echo ${{ env.matrix_object }}
