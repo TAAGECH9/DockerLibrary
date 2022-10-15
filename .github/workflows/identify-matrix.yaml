@@ -25,6 +25,6 @@ jobs:
           $value =@"
           matrix_object=$mat_object
           "@
-          Add-Content -Path $env:GITHUB_ENV -Value $value
+          Add-Content -Path $GITHUB_ENV -Value $value
       - name: Print the output
         run: echo ${{ env.matrix_object }}
