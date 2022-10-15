@@ -1,4 +1,3 @@
-FROM busybox
-LABEL maintainer="Chris Germann"
+FROM busybox:stable
 
 CMD [ "ps", "faux" ]
