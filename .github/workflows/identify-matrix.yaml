@@ -27,6 +27,7 @@ jobs:
         run: echo ${{ env.matrix_object }}
   output-matrix:
     runs-on: ubuntu-latest
+    needs: create-matrix
     steps:
       - name: Output the values
         run: |
