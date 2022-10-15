@@ -12,7 +12,4 @@ jobs:
         shell: pwsh
         run: |
          $obj = New-Object -TypeName psobject
-         $obj | Add-Member -MemberType NoteProperty -Name firstname -Value 'Chris'
-         $obj | Add-Member -MemberType NoteProperty -Name lastname -Value 'Germann'
-         $obj
-
+         $obj = Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
