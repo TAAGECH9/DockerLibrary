@@ -30,4 +30,4 @@ jobs:
     steps:
       - name: Output the values
         run: |
-          echo ${{ needs.create-matrix.outputs.matrix }}
+          echo ${{ toJson(needs.create-matrix.outputs.matrix) }}
