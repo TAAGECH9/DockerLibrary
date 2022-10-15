@@ -50,4 +50,4 @@ jobs:
         with:
           context: ./${{ matrix.projects }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME}}/${{ matrix.projects }}:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME}}/${{ matrix.projects }}:explicit
