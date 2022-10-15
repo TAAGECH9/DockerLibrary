@@ -19,9 +19,10 @@ jobs:
           $matrix = [pscustomobject]@{}
           $directories = [System.Collections.ArrayList]@()
           Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName)} | Out-Null
-          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
+          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories..split('/')[-1]
           $mat_object = $matrix | ConvertTo-Json -Compress
           Add-Content -Path $Env:GITHUB_OUTPUT -Value "matrix_object=$mat_object"
+
 
   docker:
     runs-on: ubuntu-latest
@@ -47,4 +48,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME}}/$( basename(${{ matrix.projects }})):latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME}}/${{ matrix.projects }}:latest
