@@ -14,5 +14,9 @@ jobs:
       - name: Display the current path
         shell: pwsh
         run: |
-         $bla = Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
-         $bla
+          $matrix = [pscustomobject]@{}
+          $directories = [System.Collections.ArrayList]@()
+          Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName)} | Out-Null
+          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
+          $matrix | ConvertTo-Json
+
