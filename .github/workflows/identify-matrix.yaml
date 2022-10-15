@@ -25,3 +25,9 @@ jobs:
           Add-Content -Path $Env:GITHUB_ENV -Value "matrix_object=$mat_object"
       - name: Print the output
         run: echo ${{ env.matrix_object }}
+  output-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the values
+        run: |
+          echo ${{ needs.create-matrix.outputs.matrix }}
