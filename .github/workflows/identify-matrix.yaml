@@ -19,7 +19,7 @@ jobs:
           $matrix = [pscustomobject]@{}
           $directories = [System.Collections.ArrayList]@()
           Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName)} | Out-Null
-          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories.split('/')[-1]
+          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories.split('/')[-1].ToString()
           $mat_object = $matrix | ConvertTo-Json -Compress
           Add-Content -Path $Env:GITHUB_OUTPUT -Value "matrix_object=$mat_object"
 
