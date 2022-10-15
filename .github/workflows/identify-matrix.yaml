@@ -1,0 +1,18 @@
+name: Identify Matrix object
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  create-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display the current path
+        shell: pwsh
+        run: |
+         $obj = New-Object -TypeName psobject
+         $obj | Add-Member -MemberType NoteProperty -Name firstname -Value 'Chris'
+         $obj | Add-Member -MemberType NoteProperty -Name lastname -Value 'Germann'
+         $obj
+
