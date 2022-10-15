@@ -11,5 +11,5 @@ jobs:
       - name: Display the current path
         shell: pwsh
         run: |
-         $obj = New-Object -TypeName psobject
-         Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
+         $obj = Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
+         $obj
