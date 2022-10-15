@@ -11,5 +11,5 @@ jobs:
       - name: Display the current path
         shell: pwsh
         run: |
-         $obj = Get-ChildItem -Path $PWD -Recurse -Include Dockerfile | Select-Object -Property DirectoryName | ConvertTo-Json
-         Write-Output $obj
+         $bla = 1 + 4
+         $bla
