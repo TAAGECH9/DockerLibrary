@@ -25,7 +25,8 @@ jobs:
       run: mvn package --file ./library/acr_example/pom.xml
     - name: Build and Tag image
       run: |
-        docker build -f ./library/acr_example/Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/spring-petclinic:${{ github.run_number }} .
+        cd ./library/acr_example
+        docker build -f Dockerfile -t ${{ secrets.ACR_LOGIN_SERVER }}/spring-petclinic:${{ github.run_number }} .
 
     - name: Scan image
       uses: Azure/container-scan@v0
