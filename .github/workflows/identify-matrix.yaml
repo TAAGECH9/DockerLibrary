@@ -36,4 +36,4 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Run script
         run: |
-          az acr list
+          az acr repository show-tags --name ${{ secrets.ACR_NAME }} --repository ${{ matrix.projects }} --output table
