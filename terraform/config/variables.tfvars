@@ -10,3 +10,4 @@ acr = {
   sku      = "Basic"
   location = "West Europe"
 }
+
