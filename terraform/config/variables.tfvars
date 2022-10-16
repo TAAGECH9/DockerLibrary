@@ -9,5 +9,5 @@ acr = {
   name     = "DockerImageRegistryCodingIsLove"
   sku      = "Basic"
   location = "West Europe"
+  admin_enabled = true
 }
-
