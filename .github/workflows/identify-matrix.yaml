@@ -56,14 +56,22 @@ jobs:
         run: |
           echo "IMAGE_REF=${{ env.IMAGE_REF }}-dev-$(echo ${GITHUB_SHA} | cut -c1-7)" \
             >>${GITHUB_ENV}
-
       - name: Print IMAGE_REF
         run: echo ${{ env.IMAGE_REF }}
-
       - name: Export IMAGE_TAG environment variable
         run: |
           echo "IMAGE_TAG=${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_REF }}" \
             >>${GITHUB_ENV}
-
       - name: Print IMAGE_REF
         run: echo ${{ env.IMAGE_REF }}
+      - name: Build and Push Image
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ./library/${{ matrix.projects }}
+          tags: ${{ env.IMAGE_TAG }}
+          build-args: |
+            IMAGE_VERSION=${{ env.IMAGE_VERSION }}
+      - name: Print Image Digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
