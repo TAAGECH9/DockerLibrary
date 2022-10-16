@@ -41,4 +41,5 @@ jobs:
         with:
           azcliversion: 2.0.80
           inlineScript: |
-            az acr repository show-manifests
+            az acr login -n ${{ secrets.ACR_NAME }}
+            az acr list -o table
