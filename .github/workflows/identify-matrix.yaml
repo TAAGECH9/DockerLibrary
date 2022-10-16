@@ -2,6 +2,7 @@ name: Identify Matrix object
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   create-matrix:
