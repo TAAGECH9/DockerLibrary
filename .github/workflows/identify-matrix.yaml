@@ -64,6 +64,16 @@ jobs:
             >>${GITHUB_ENV}
       - name: Print IMAGE_REF
         run: echo ${{ env.IMAGE_REF }}
+      - name: Build and Tag image
+        run: |
+          cd ./library/${{ matrix.projects }}
+          docker build -f Dockerfile -t ${{ env.IMAGE_TAG }} .
+      - name: Scan image
+        uses: Azure/container-scan@v0
+        with:
+          image-name: ${{ env.IMAGE_TAG }}
+          severity-threshold: CRITICAL
+          run-quality-checks: true
       - name: Build and Push Image
         id: docker_build
         uses: docker/build-push-action@v2
