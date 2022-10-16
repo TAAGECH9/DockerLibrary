@@ -6,7 +6,7 @@ docker_rg = {
 }
 
 acr = {
-  name     = "DockerImageRegistry"
+  name     = "DockerImageRegistryCodingIsLove"
   sku      = "Basic"
   location = "West Europe"
 }
