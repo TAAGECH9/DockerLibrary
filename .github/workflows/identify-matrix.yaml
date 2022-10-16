@@ -47,8 +47,8 @@ jobs:
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - name: Retrieve Image Name/Version and export IMAGE_REF
         run: |
-          IMAGE_NAME=$(grep '# IMAGE_NAME:' ${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
-          IMAGE_VERSION=$(grep '# IMAGE_VERSION:' ${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
+          IMAGE_NAME=$(grep '# IMAGE_NAME:' ./library/${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
+          IMAGE_VERSION=$(grep '# IMAGE_VERSION:' ./library/${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
           echo "IMAGE_REF=${IMAGE_NAME}:${IMAGE_VERSION}" \
             >>${GITHUB_ENV}
       - name: Add suffix to IMAGE_REF if not built from master/main branch
