@@ -47,6 +47,6 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: ./${{ matrix.projects }}
+          context: ./library/${{ matrix.projects }}
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME}}/${{ matrix.projects }}:explicit
