@@ -1,6 +1,6 @@
 
 
-docker-rg = {
+docker_rg = {
   location = "West Europe"
   name     = "docker-image-library-rg"
 }

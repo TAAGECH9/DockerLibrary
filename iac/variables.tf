@@ -5,7 +5,7 @@ variable "subscription_id" {}
 variable "tenant_id" {}
 
 
-variable "docker-rg" {
+variable "docker_rg" {
     type = map(string)
 }
 
