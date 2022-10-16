@@ -60,7 +60,7 @@ jobs:
         run: echo ${{ env.IMAGE_REF }}
       - name: Export IMAGE_TAG environment variable
         run: |
-          echo "IMAGE_TAG=${{ secrets.REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_REF }}" \
+          echo "IMAGE_TAG=${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_REF }}" \
             >>${GITHUB_ENV}
       - name: Print IMAGE_REF
         run: echo ${{ env.IMAGE_REF }}
