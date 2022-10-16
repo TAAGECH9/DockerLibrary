@@ -2,11 +2,11 @@
 
 docker_rg = {
   location = "West Europe"
-  name     = "docker_image_library_rg"
+  name     = "docker-image-registry-rg"
 }
 
 acr = {
-  name     = "docker_image_library"
+  name     = "DockerImageRegistry"
   sku      = "Basic"
   location = "West Europe"
 }
