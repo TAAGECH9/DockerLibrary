@@ -37,9 +37,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Azure CLI script file
+        uses: azure/CLI@v1
         with:
           azcliversion: 2.0.80
           inlineScript: |
             az acr repository show-manifests
-
-
