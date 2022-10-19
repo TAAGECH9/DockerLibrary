@@ -13,7 +13,7 @@ jobs:
       - name: Checkout directory
         uses: actions/checkout@v3
         with:
-          ref: "main"
+          submodules: true
       - name: Create Matrix object
         id: matrix
         shell: pwsh
@@ -33,6 +33,8 @@ jobs:
       steps:
         - name: Checkout directory
           uses: actions/checkout@v3
+          with:
+            submodules: true
         - uses: hadolint/hadolint-action@v2.0.0
           with:
             dockerfile: ./library/${{ matrix.projects }}/Dockerfile
