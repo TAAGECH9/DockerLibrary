@@ -1,0 +1,5 @@
+#
+# Metadata used by docker-build-and-push.yml GitHub Action Workflow
+# IMAGE_NAME: ansible/ansible-runner
+# IMAGE_VERSION: 2.2
+#
