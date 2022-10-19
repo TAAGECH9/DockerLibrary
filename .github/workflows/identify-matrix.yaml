@@ -41,7 +41,7 @@ jobs:
           $matrix_submodules = [pscustomobject]@{}
           $directories = [System.Collections.ArrayList]@()
           Get-ChildItem -Path $PWD -Recurse -Depth 2 -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName.split('/')[-1])} | Out-Null
-          $non_sub_modules = ${{ needs.create-matrix.outputs.matrix }} | ConvertFrom-Json
+          $non_sub_modules = ${{ fromJSON(needs.create-matrix.outputs.matrix) }} | ConvertFrom-Json
           $directories = $directories | Where-Object { $non_sub_modules[0].projects -notcontains $_ }
           $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
           $mat_object = $matrix | ConvertTo-Json -Compress
