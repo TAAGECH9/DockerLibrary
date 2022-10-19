@@ -32,7 +32,7 @@ jobs:
       strategy:
         matrix: ${{ fromJson(needs.create-matrix.outputs.matrix) }}
           exclude:
-            - projects: "ansible-runner"
+            - matrix: "ansible-runner"
       steps:
         - name: Checkout directory
           uses: actions/checkout@v3
