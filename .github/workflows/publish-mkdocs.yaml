@@ -1,25 +1,6 @@
 name: Publish Private Documentation
 
 on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: "Log level"
-        required: true
-        default: "warning"
-        type: choice
-        options:
-          - info
-          - warning
-          - debug
-      tags:
-        description: "Test scenario tags"
-        required: false
-        type: boolean
-      environment:
-        description: "Environment to run tests against"
-        type: environment
-        required: true
   push:
 
 env:
@@ -43,10 +24,10 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           dns-name-label: url-for-container
-          image: dockerimageregistrycodingislove.azurecr.io/taagech9/${{ github.event.inputs.image_name }}:${{ github.event.inputs.image_version }}
+          image: dockerimageregistrycodingislove.azurecr.io/taagech9/mkdocs:v0.0.1-dev-38088c9
           cpu: 1 #Optional
           memory: 0.1 #Optional
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-          name: ${{ github.event.input.image_name }}-container
+          name: mkdocs-container
           location: "west us"
