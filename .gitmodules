@@ -1,3 +1,0 @@
-[submodule "library/ansible-runner"]
-	path = library/ansible-runner
-	url = https://github.com/ansible/ansible-runner.git
