@@ -9,6 +9,7 @@ on:
         description: 'Which version of the Docs would you like to publish'
         required: true
         default: '0.0.1'
+  push:
 
 name: Publish Private Documentation
 
