@@ -33,7 +33,7 @@ jobs:
         - name: 'Deploy to Azure Container Instances'
           uses: 'azure/aci-deploy@v1'
           with:
-            resource-group: $RESOURCE_GROUP
+            resource-group: ${{ env.RESOURCE_GROUP }}
             dns-name-label: url-for-container
             image: dockerimageregistrycodingislove.azurecr.io/${ github.event.input.image_name }}:${{ github.event.input.image_version }}
             cpu: 1   #Optional
