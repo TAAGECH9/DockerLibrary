@@ -3,6 +3,7 @@
 # IMAGE_NAME: plex-example
 # IMAGE_VERSION: v0.0.1
 #
+# Random comment to trigger new hash
 
 FROM busybox:stable
 
