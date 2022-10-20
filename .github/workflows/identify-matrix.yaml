@@ -26,7 +26,7 @@ jobs:
 
   docker-build-scan-push:
       runs-on: ubuntu-latest
-      needs: [create-matrix,Lint-Dockerfile]
+      needs: [create-matrix]
       strategy:
         matrix: ${{ fromJson(needs.create-matrix.outputs.matrix) }}
         fail-fast: false
