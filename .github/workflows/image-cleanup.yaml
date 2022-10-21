@@ -1,9 +1,8 @@
 name: Image image-cleanup
 
 on:
-  pull_request:
-    types:
-      - closed
+  schedule:
+    - cron: '*/5 * * * *'
 
 env:
   REGISTRY: dockerimageregistrycodingislove
