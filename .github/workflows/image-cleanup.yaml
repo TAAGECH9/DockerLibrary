@@ -2,9 +2,7 @@ name: Image image-cleanup
 
 on:
   schedule:
-    # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '21 14 * * *'
-
+    - cron: '* * * * *'
 
 env:
   REGISTRY: dockerimageregistrycodingislove
