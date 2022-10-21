@@ -1,6 +1,6 @@
 #
 # Metadata used by docker-build-and-push.yml GitHub Action Workflow
-# IMAGE_NAME: taagech9/mkdocs
+# IMAGE_NAME: mkdocs
 # IMAGE_VERSION: v0.0.1
 #
 FROM python:3.9
