@@ -3,7 +3,7 @@ name: Image image-cleanup
 on:
   schedule:
     # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '16 14 * * *'
+    - cron: '18 14 * * *'
 
 
 env:
