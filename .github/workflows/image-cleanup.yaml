@@ -2,7 +2,7 @@ name: Image image-cleanup
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: "*/5 * * * *"
 
 env:
   REGISTRY: dockerimageregistrycodingislove
