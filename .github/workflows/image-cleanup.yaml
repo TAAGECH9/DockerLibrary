@@ -50,6 +50,6 @@ jobs:
               if [[ "$tag" == *"dev"* ]]; then
                   tag="${{ matrix.projects }}:${tag:1:-1}"
                   echo $tag
-                  az acr repository untag -n $registry --image $tag
+                  az acr repository untag -n ${{ env.REGISTRY }} --image $tag
               fi
           done
