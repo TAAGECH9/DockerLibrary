@@ -1,8 +1,9 @@
 name: Image image-cleanup
 
 on:
-  push:
-  workflow_dispatch:
+  schedule:
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '5 16 * * *'
 
 env:
   REGISTRY: dockerimageregistrycodingislove
