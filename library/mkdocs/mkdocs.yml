@@ -1,0 +1,55 @@
+site_name: Kubernetes
+site_url: https://codingislove.app
+repo_url: https://taagech9.github.io/LearningNotes/
+repo_name: 'GitHub'
+site_author: 'Chris Germann'
+
+nav:
+  - Home:
+    - 'Configuration' : 'configuration.md'
+    - 'Core concepts' : 'core_concepts.md'
+    - 'Multicontainer Pods' : 'multicontainer_pods.md'
+    - 'Observability' : 'observability.md'
+    - 'Pod Design' : 'pod_design.md'
+    - 'Services and Networking' : 'services_and_networking.md'
+    - 'State Persistence' : 'state_persistence.md'
+  - Maintenance:
+    - 'Upgrade Cluster': 'upgrade_pcms_cluster.md'
+  - Helpers:
+    - 'Links': 'links.md'
+    - 'Q&A': 'questions.md'
+    - 'Exam Configs': 'exam_configs.md'
+    - 'CKA Snippets': 'commands_cka.md'
+    - 'Further command compilation' : 'kubectl.md'
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    - header.autohide
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://twitter.com/squidfunk
+      name: squidfunk on Twitter
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+dev_addr: '0.0.0.0:80'
