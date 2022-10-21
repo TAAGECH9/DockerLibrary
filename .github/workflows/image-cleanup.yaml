@@ -1,0 +1,55 @@
+name: Image image-cleanup
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  REGISTRY: dockerimageregistrycodingislove
+
+
+jobs:
+  create-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix_object }}
+    steps:
+      - name: Checkout directory
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Create Matrix object
+        id: matrix
+        shell: pwsh
+        run: |
+          $matrix = [pscustomobject]@{}
+          $directories = [System.Collections.ArrayList]@()
+          Get-ChildItem -Path $PWD -Recurse -Depth 2 -Include Dockerfile | Select-Object -Property DirectoryName | Foreach-Object {$directories.Add($_.DirectoryName.split('/')[-1])} | Out-Null
+          $matrix | Add-Member -MemberType NoteProperty -Name "projects" -Value $directories
+          $mat_object = $matrix | ConvertTo-Json -Compress
+          Add-Content -Path $Env:GITHUB_OUTPUT -Value "matrix_object=$mat_object"
+          $mat_object
+
+  image-cleanup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ${{ insert }}: ${{ fromJson(needs.create-matrix.outputs.matrix) }}
+      fail-fast: false
+    steps:
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Run script
+        run: |
+          declare -a tags=$(az acr repository show-tags -n ${{ env.REGISTRY }} --repository ${{ matrix.projects }} --output json | jq '.[]')
+          for tag in $tags
+          do
+              if [[ "$tag" == *"dev"* ]]; then
+                  tag="$repository:${tag:1:-1}"
+                  echo $tag
+                  az acr repository untag -n $registry --image $tag
+              fi
+          done
