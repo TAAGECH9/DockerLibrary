@@ -1,8 +1,8 @@
 name: Image image-cleanup
 
 on:
-  schedule:
-    - cron: '0 7 * * MON'
+  workflow_dispatch:
+  push:
 
 env:
   REGISTRY: dockerimageregistrycodingislove
@@ -44,7 +44,8 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Run script
         run: |
-          declare -a tags=$(az acr repository show-tags -n ${{ env.REGISTRY }} --repository ${{ matrix.projects }} --output json | jq '.[]')
+         IMAGE_NAME=$(grep '# IMAGE_NAME:' ${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
+          declare -a tags=$(az acr repository show-tags -n ${{ env.REGISTRY }} --repository $IMAGE_NAME --output json | jq '.[]')
           for tag in $tags
           do
               if [[ "$tag" == *"dev"* ]]; then
