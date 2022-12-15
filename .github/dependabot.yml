@@ -12,3 +12,7 @@ updates:
     directory: "/library/plex-example"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/library/openssh-example"
+    schedule:
+      interval: "weekly"
