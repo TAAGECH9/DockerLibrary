@@ -34,7 +34,7 @@ azure-mgmt-loganalytics==1.0.0
 azure-mgmt-managedservices==1.0.0
 azure-mgmt-managementgroups==0.2.0
 azure-mgmt-maps==0.1.0
-azure-mgmt-marketplaceordering==0.1.0
+azure-mgmt-marketplaceordering==1.1.0
 azure-mgmt-media==10.1.0
 azure-mgmt-monitor==0.5.2
 azure-mgmt-msi==0.2.0
