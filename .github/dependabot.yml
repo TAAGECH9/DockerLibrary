@@ -4,3 +4,11 @@ updates:
     directory: "/library/mkdocs"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/library/openssh-example"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/library/plex-example"
+    schedule:
+      interval: "weekly"
