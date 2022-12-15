@@ -71,7 +71,7 @@ azure-synapse-spark==0.2.0
 cryptography==36.0.0
 fabric==2.6.0
 javaproperties==0.5.1
-jsmin==3.0.0
+jsmin==3.0.1
 jsondiff==1.2.0
 msrest==0.6.21
 msrestazure==0.6.4
