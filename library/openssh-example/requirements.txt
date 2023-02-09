@@ -68,7 +68,7 @@ azure-storage-common==1.4.2
 azure-storage==0.35.1
 azure-synapse-accesscontrol==0.2.0
 azure-synapse-spark==0.2.0
-cryptography==36.0.0
+cryptography==39.0.1
 fabric==2.6.0
 javaproperties==0.5.1
 jsmin==3.0.1
