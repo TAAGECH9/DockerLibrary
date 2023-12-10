@@ -1,12 +1,4 @@
 general:
   vulnerabilities:
-    - CVE-2017-12424
-    - CVE-2023-28531
-    - CVE-2023-45853
 
   bestPracticeViolations:
-    - CIS-DI-0001
-    - CIS-DI-0003
-    - CIS-DI-0005
-    - CIS-DI-0006
-    - CIS-DI-0008
