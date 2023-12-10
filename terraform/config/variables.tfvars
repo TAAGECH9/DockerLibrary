@@ -6,8 +6,8 @@ docker_rg = {
 }
 
 acr = {
-  name     = "DockerImageRegistryCodingIsLove"
-  sku      = "Basic"
-  location = "West Europe"
+  name          = "DockerImageRegistryCodingIsLove"
+  sku           = "Basic"
+  location      = "West Europe"
   admin_enabled = true
 }

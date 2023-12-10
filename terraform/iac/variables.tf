@@ -4,11 +4,9 @@ variable "client_secret" {}
 variable "subscription_id" {}
 variable "tenant_id" {}
 
-
 variable "docker_rg" {
-    type = map(string)
+  type = map(string)
 }
-
 variable "acr" {
-    type = map(string)
+  type = map(string)
 }
