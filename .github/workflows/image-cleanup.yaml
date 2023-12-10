@@ -44,13 +44,13 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Run script
         run: |
-         IMAGE_NAME=$(grep '# IMAGE_NAME:' ${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
-          declare -a tags=$(az acr repository show-tags -n ${{ env.REGISTRY }} --repository $IMAGE_NAME --output json | jq '.[]')
-          for tag in $tags
-          do
-              if [[ "$tag" == *"dev"* ]]; then
-                  tag="${{ matrix.projects }}:${tag:1:-1}"
-                  echo $tag
-                  az acr repository untag -n ${{ env.REGISTRY }} --image $tag
-              fi
-          done
+          IMAGE_NAME=$(grep '# IMAGE_NAME:' ${{ matrix.projects }}/Dockerfile | cut -d ':' -f2 | xargs)
+           declare -a tags=$(az acr repository show-tags -n ${{ env.REGISTRY }} --repository $IMAGE_NAME --output json | jq '.[]')
+           for tag in $tags
+           do
+               if [[ "$tag" == *"dev"* ]]; then
+                   tag="${{ matrix.projects }}:${tag:1:-1}"
+                   echo $tag
+                   az acr repository untag -n ${{ env.REGISTRY }} --image $tag
+               fi
+           done
