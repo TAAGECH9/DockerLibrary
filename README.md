@@ -31,7 +31,9 @@ Contains the required Workflows, a containescan directory which allows certain C
 ### Prerequisites
 
 - You have a Terraform Cloud Account
-- You have an Azure account and have a service principal that can be used
+- You have an Azure account and have a service principal
+- The service Principal should have `Contributor` permission assigned on Subscription scope
+- The service Principal must have `AcrPush` permissions assigned on ACR scope.
 
 
 ### What to do?
