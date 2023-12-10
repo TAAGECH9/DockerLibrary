@@ -38,7 +38,7 @@ Contains the required Workflows, a containescan directory which allows certain C
 
 ### What to do?
 
-1. Configure Terraform Cloud
+#### Configure Terraform Cloud
   - In Terraform Cloud workspace with the same name you choose for the `backend.hcl` file
   - Configure the Terraform Working directory to `terraform/iac`
   - Configure the Environment Variable for your Workspace
@@ -49,3 +49,23 @@ Contains the required Workflows, a containescan directory which allows certain C
     - tenant_id
     - client_id
     - client_secret
+
+#### Configure Github Actions
+
+The following secrets need to be created in the Github Actions variables
+
+- **AZURE_CREDENTIALS** as described [here](https://github.com/marketplace/actions/azure-login#workflow-examples).
+  ```json
+  {
+      "clientSecret":  "******",
+      "subscriptionId":  "******",
+      "tenantId":  "******",
+      "clientId":  "******"
+  }
+  ```
+
+- **REGISTRY_USERNAME** The clientId from the JSON above
+
+- **REGISTRY_PASSWORD** The clientSecret from the JSON above
+
+- **ACR_LOGIN_SERVER** Can be found on the overview page of the ACR
