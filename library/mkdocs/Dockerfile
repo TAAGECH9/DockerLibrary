@@ -3,7 +3,7 @@
 # IMAGE_NAME: mkdocs
 # IMAGE_VERSION: v0.0.1
 #
-FROM python:3.11
+FROM python:3.12
 
 WORKDIR /app
 
